@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoExercise.Interfaces.Repositories;
+using DemoExercise.Interfaces.Services;
+using DemoExercise.Repositories;
+using DemoExercise.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +28,11 @@ namespace DemoExercise
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+
+            //Dependency Injection
+            services.AddTransient<IExampleRepository, ExampleRepository>();
+            services.AddTransient<IExampleService, ExampleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
